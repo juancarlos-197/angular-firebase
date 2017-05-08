@@ -1,0 +1,58 @@
+<h1>Registro datos complementarios a la solicitud</h1>
+
+<h3>Empresa que aprueba el crédito: {{dtc.creditoSeleccionado.empresa}}</h3>
+<h3>La tasa de interés aprobada para este crédito es del: {{dtc.creditoSeleccionado.interes*100}}%</h3>
+<h3>Rango aprobado para el monto de crédito($): Min:{{dtc.creditoSeleccionado.min}} - Max: {{dtc.creditoSeleccionado.max}}</h3>
+<md-divider ng-if="!$last"></md-divider>
+<h2>Por favor rellene el siguiente formulario para realizar la solicitude de su crédito.</h2>
+
+<form name="dtc.solicitudForm">
+    <md-content layout-gt-sm="row" layout-padding>
+        <div>
+            <md-input-container>
+                <label>Monto</label>
+                <input ng-disabled="!dtc.hideButton" ng-model="dtc.datos.monto" type="number" required name="monto">
+                <div ng-messages="dtc.solicitudForm.monto.$error" ng-show="dtc.solicitudForm.monto.$invalid">
+                    <div ng-message="required">Introduce el monto.</div>
+                </div>
+            </md-input-container>
+            <br>
+            <label>Seleccione el plazo de pago que desea para su crédito:</label>
+            <md-input-container>
+                <label>Plazo(meses)</label>
+                <md-select ng-disabled="!dtc.hideButton" ng-model="dtc.datos.plazo">
+                    <md-option><em>Seleccione uno</em></md-option>
+                    <md-option ng-repeat="plazo in dtc.creditoSeleccionado.plazo" ng-value="plazo" ng-disabled="$index === -1">
+                        {{plazo}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <br>
+
+            <md-input-container>
+                <label>Dirección</label>
+                <input ng-disabled="!dtc.hideButton" ng-model="dtc.datos.direccion" type="text" required name="dir">
+                <div ng-messages="dtc.solicitudForm.dir.$error" ng-show="dtc.solicitudForm.dir.$invalid">
+                    <div ng-message="required">Digite su dirección.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Teléfono</label>
+                <input ng-disabled="!dtc.hideButton" ng-model="dtc.datos.telefono" type="text" required name="tel">
+                <div ng-messages="dtc.solicitudForm.tel.$error" ng-show="dtc.solicitudForm.dir.$invalid">
+                    <div ng-message="required">Digite su telefono.</div>
+                </div>
+            </md-input-container>
+            <h3>{{dtc.errores}}</h3>
+        </div>
+    </md-content>
+</form>
+
+
+<md-button  ng-show="dtc.hideButton" class="md-raised md-primary" ng-click="dtc.calcularMensualidad()">Calcular Mensualidad</md-button>
+<h4>Valor de su mensualidad: {{dtc.mensualidad}}</h4>
+<h4>Total a pagar por su crédito($): $ {{dtc.totalCredito}}</h4>
+<md-button type="submite" ng-show="dtc.hideButton" type="submit" class="md-raised" ng-click="dtc.enviarDatos()"><b>Aceptar y enviar solicitud</b></md-button>
+<h3>{{dtc.confirmacion}}</h3>

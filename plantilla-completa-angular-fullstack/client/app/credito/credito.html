@@ -1,0 +1,51 @@
+<br/> {{creditoCtrl.mensaje}}
+<md-content class="md-no-momentum">
+      <form name="formRegistroCredito" class="md-raised" ng-click="creditoCtrl.borrarMensaje()">
+            <md-card-content style="align-content: center; padding: 2%">
+                  <md-card >
+                        <span class="md-subhead" style="text-align: center"><br>Bienvenido!, ingresa la información para agregar opciones de crédito</span>
+                       
+                              <div layout="row" layout-align="center center">
+                                    <md-input-container style="align-self: flex-start; margin: 2%">
+                                          <label>Nombre de la empresa</label>
+                                          <input required type="text" step="any" name="minimo" ng-model="creditoCtrl.empresa">
+                                    </md-input-container>
+                              </div>
+                              <div layout="row" layout-align="center center">
+                                    <md-input-container style="align-self: flex-start; margin: 2%">
+                                          <label>Interés (p.e. 0.35)</label>
+                                          <input required min="0" max="1" type="number" step="any" name="interes" ng-model="creditoCtrl.valorInteres">
+                                    </md-input-container>
+                              </div>
+                              <div layout="row" layout-align="center center">
+                                    <md-input-container style="align-self: flex-start; margin: 2%">
+                                          <label>Plazos  ( p.e. 12-18-24 )</label>
+                                          <input required type="text" step="any" name="interes" ng-model="creditoCtrl.plazos">
+                                    </md-input-container>
+                              </div>
+                              <div layout="row" layout-align="center center">
+                                    <md-input-container class="md-block inputdemoErrors">
+                                          <label>Minimo (USD)</label>
+                                          <input required od="campoEmpresa" type="number" step="any" name="minimo" ng-model="creditoCtrl.min" min="{{creditoCtrl._min}}"
+                                                max="{{creditoCtrl.max}}" />
+                                    </md-input-container>
+                                    <md-input-container class="md-block inputdemoErrors">
+                                          <label>Máximo (USD)</label>
+                                          <input required id="campoMaximo" type="number" step="any" name="maximo" ng-model="creditoCtrl.max" min="{{creditoCtrl.min}}"
+                                                max="{{creditoCtrl._max}}" />
+                                    </md-input-container>
+                              </div>
+
+                              <div layout="row" style="all: inherit">
+                                    <md-input-container class="md-block">
+                                          <label id="respuesta" style="color:red">{{creditoCtrl._respuesta}}</label>
+                                    </md-input-container>
+                                    <md-button class="md-raised md-primary" ng-click="creditoCtrl.registrar()">
+                                          Registrar
+                                    </md-button>
+                              </div>
+                       
+                  </md-card>
+            </md-card-content>
+      </form>
+</md-content>

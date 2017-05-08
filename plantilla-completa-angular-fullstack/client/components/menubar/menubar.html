@@ -1,0 +1,274 @@
+<div ng-switch="mp._$rootScope.typemenubar">
+    <!--
+        Sin menú
+        -->
+    <div ng-switch-when="0">
+    </div>
+    <!--
+        Menú para el modulo normal
+        -->
+    <div ng-switch-when="1">
+        <md-menu-bar>
+            <md-menu>
+                <button ng-click="$mdOpenMenu()">
+                    Clientes
+                </button>
+                <md-menu-content>
+                    <md-menu-item>
+                        <md-button ng-click="mp.clickActionCC('cver', $event)">
+                            Ver
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+            <md-menu>
+                <button ng-click="$mdOpenMenu()">
+                    Reportes
+                </button>
+                <md-menu-content>
+                    <md-menu-item>
+                        <md-button ng-click="mp.clickActionCC('ctcc', $event)">
+                            Tabla amortización con Credito
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="mp.clickActionCC('ctcs', $event)">
+                            Tabla amortización con Solicitud
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="mp.clickActionCC('ctss', $event)">
+                            Tabla amortización sin Solicitud
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-divider></md-menu-divider>
+                    <md-menu-item>
+                        <md-button ng-click="mp.clickActionCC('cec', $event)">
+                            Estado de cuenta
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </md-menu-bar>
+    </div>
+
+
+    <!--
+        Menú para el modulo de ahorro
+        -->
+    <div ng-switch-when="2">
+        <md-menu-bar>
+            <md-menu>
+                <button ng-click="$mdOpenMenu()">
+                    Catálogos
+                </button>
+                <md-menu-content>
+                    <md-menu-item>
+                        <md-button ng-click="mp.clickActionAhorros('cesq', $event)">Esquema de tasa de interés</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="mp.clickActionAhorros('cpro', $event)">Productos de ahorro</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+            <md-menu>
+                <button ng-click="$mdOpenMenu()">
+                    Operación
+                </button>
+                <md-menu-content>
+                    <md-menu-item>
+                        <md-button ng-click="mp.clickActionAhorros('osol', $event)">Solicitud de cuentas de ahorro</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+            <md-menu>
+                <button ng-click="$mdOpenMenu()">
+                    Reportes
+                </button>
+                <md-menu-content>
+                    <md-menu-item>
+                        <md-button ng-click="mp.clickActionAhorros('ride', $event)">Reporte IDE</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="mp.clickActionAhorros('rctas', $event)">Reporte de cuentas de ahorro</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </md-menu-bar>
+    </div>
+</div>
+<!--<md-menu>
+        <button class="itempmenu" ng-click="$mdOpenMenu()">
+              File
+        </button>-->
+<!--<md-menu-content>
+            <md-menu-item>
+                <md-button ng-click="menu.sampleAction('share', $event)">
+                    Share...
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item>
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu()">New</md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ng-click="menu.sampleAction('New Document', $event)">Document</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menu.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menu.sampleAction('New Presentation', $event)">Presentation</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menu.sampleAction('New Form', $event)">Form</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menu.sampleAction('New Drawing', $event)">Drawing</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="menu.sampleAction('Open', $event)">
+                    Open...
+                    <span class="md-alt-text"> {{ 'M-O' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button disabled="disabled" ng-click="menu.sampleAction('Rename', $event)">
+                    Rename
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item>
+                <md-button ng-click="menu.sampleAction('Print', $event)">
+                    Print
+                    <span class="md-alt-text">{{ 'M-P' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+        </md-menu-content>-->
+<!--</md-menu>-->
+<!--<md-menu>
+        <button ng-click="$mdOpenMenu()">
+              Edit
+        </button>-->
+<!--<md-menu-content>
+            <md-menu-item class="md-indent">-->
+<!--<md-icon md-svg-icon="undo"></md-icon>-->
+<!--<md-button ng-click="menu.sampleAction('undo', $event)">
+                    Undo
+                    <span class="md-alt-text">{{ 'M-Z' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item class="md-indent">-->
+<!--<md-icon md-svg-icon="redo"></md-icon>-->
+<!--<md-button ng-click="menu.sampleAction('redo', $event)">
+                    Redo
+                    <span class="md-alt-text">{{ 'M-Y' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item class="md-indent">-->
+<!--<md-icon md-svg-icon="content-cut"></md-icon>-->
+<!--<md-button ng-click="menu.sampleAction('cut', $event)">
+                    Cut
+                    <span class="md-alt-text">{{ 'M-X' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item class="md-indent">-->
+<!--<md-icon md-svg-icon="content-copy"></md-icon>-->
+<!--<md-button ng-click="menu.sampleAction('copy', $event)">
+                    Copy
+                    <span class="md-alt-text">{{ 'M-C' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item class="md-indent">-->
+<!--<md-icon md-svg-icon="content-paste"></md-icon>-->
+<!--<md-button ng-click="menu.sampleAction('paste', $event)">
+                    Paste
+                    <span class="md-alt-text">{{ 'M-P' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item class="md-indent">
+                <md-button ng-click="menu.sampleAction('Find and replace', $event)">
+                    Find and replace...
+                    <span class="md-alt-text">{{ 'M-S-H' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+        </md-menu-content>-->
+<!--</md-menu>
+    <md-menu>
+        <button ng-click="$mdOpenMenu()">
+              View
+        </button>-->
+<!--<md-menu-content>
+            <md-menu-item type="checkbox" ng-model="menu.settings.printLayout">Print layout</md-menu-item>
+            <md-menu-item class="md-indent">
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu()">Mode</md-button>
+                    <md-menu-content width="3">
+                        <md-menu-item type="radio" ng-model="menu.settings.presentationMode" value="'presentation'">Presentation</md-menu-item>
+                        <md-menu-item type="radio" ng-model="menu.settings.presentationMode" value="'edit'">Edit</md-menu-item>
+                        <md-menu-item type="radio" ng-model="menu.settings.presentationMode" value="'modifiable'">Modifiable</md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item type="checkbox" ng-model="menu.settings.showRuler">Show ruler</md-menu-item>
+            <md-menu-item type="checkbox" ng-model="menu.settings.showEquationToolbar">Show equation toolbar</md-menu-item>
+            <md-menu-item type="checkbox" ng-model="menu.settings.showSpellingSuggestions">Show spelling suggestions</md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item type="checkbox" ng-model="menu.settings.compactControls">Compact controls</md-menu-item>
+            <md-menu-item type="checkbox" ng-model="menu.settings.fullScreen">Full screen</md-menu-item>
+        </md-menu-content>-->
+<!--</md-menu>
+    <md-menu>
+        <button ng-click="$mdOpenMenu()">
+              Format
+        </button>-->
+<!--<md-menu-content>
+            <md-menu-item>
+                <md-button ng-click="menu.sampleAction('bold', $event)">
+                    Bold
+                    <span class="md-alt-text"> {{ 'M-B' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="menu.sampleAction('italic', $event)">
+                    Italic
+                    <span class="md-alt-text">{{ 'M-I' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="menu.sampleAction('underline', $event)">
+                    Underline
+                    <span class="md-alt-text">{{ 'M-U' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="menu.sampleAction('strikethrough', $event)">
+                    Strikethrough
+                    <span class="md-alt-text">{{ 'A-S-5' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="menu.sampleAction('superscript', $event)">
+                    Superscript
+                    <span class="md-alt-text">{{ 'M-.' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="menu.sampleAction('subscript', $event)">
+                    Subscript
+                    <span class="md-alt-text">{{ 'M-,' | keyboardShortcut }}</span>
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item>
+                <md-button ng-click="menu.toggleSetting('clearFormatting')">Clear Formatting</md-button>
+            </md-menu-item>
+        </md-menu-content>-->
+<!--</md-menu>-->

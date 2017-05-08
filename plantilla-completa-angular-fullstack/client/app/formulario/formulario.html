@@ -1,0 +1,36 @@
+
+<form name="datosuser" novalidate>
+    <md-input-container class="md-block" flex-gt-sm>
+          <label>Primer nombre</label>
+          <input md-maxlength="50" required name="pnombre" type="text" ng-model="fm.data.primernombre" />
+          <div ng-messages="datosuser.pnombre.$error" ng-show="datosuser.pnombre.$invalid">
+            <div ng-message="required">Nombre es requerido.</div>
+            <div ng-message="md-maxlength">El nombre no puede ser mayor a 50.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Teléfono</label>
+          <input name="telefono" ng-model="fm.data.telefono" ng-pattern="/^[(][0-9]{3}[)]-[0-9]{3}-[0-9]{4}$/" />
+
+          <div class="hint" ng-show="daotsuser.telefono.$valid">(###)-###-####</div>
+
+          <div ng-messages="datosuser.telefono.$error" ng-show="datosuser.telefono.$invalid">
+            <div ng-message="pattern">(###)-###-#### - Introdusca un teléfono correcto.</div>
+          </div>
+        </md-input-container>
+Email: <input name="email" type="email" ng-model="fm.data.email" required><br/>
+<samp ng-show="datosuser.email.$touched && datosuser.email.$invalid">El email es incorrecto</samp>
+Registrar a noticias: <input type="checkbox" ng-model="fm.data.registrar">
+Sexo:<input type="radio" ng-model="fm.data.sexo" value="M">Hombre
+     <input type="radio" ng-model="fm.data.sexo" value="F">Mujer
+Escolaridad:<select ng-model="fm.data.escolaridad">
+                <option value="">
+                <option value="primaria">Primaria
+                <option value="secundaria">Secundaria
+                <option value="preparatoria">Preparatoria
+                <option value="universidad">Universidad
+            </select>
+            <!--<input type="submit" value="Envíar">-->
+            <md-button class="md-raised" ng-click="fm.enviar(datosuser.$valid)">Envíar</md-button>
+</form>
+{{datosuser.$valid}}

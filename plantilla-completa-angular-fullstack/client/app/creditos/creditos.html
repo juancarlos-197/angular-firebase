@@ -1,0 +1,69 @@
+<md-table-container>
+    <md-content md-table layout-padding>
+        <form name="cc.rango" novalidate>
+            <div layout="row">   
+
+                            
+                <md-input-container class="md-block" flex="10">
+                    <label>Valor MIN</label>
+                    <input type="number" required name="min" ng-model="cc.min">
+                        <div ng-messages="cc.rango.min.$error" ng-show="cc.rango.min.$invalid">
+                          <div ng-message="required">Ingrese valor min</div>
+                       </div>
+                </md-input-container>
+
+
+                <md-input-container class="md-block" flex="10">
+                    <label>Valor MAX</label>
+                    <input type="number" required name="max" ng-model="cc.max">
+                      <div ng-messages="cc.rango.max.$error" ng-show="cc.rango.max.$invalid">
+                         <div ng-message="required">Ingrese valor max</div>
+                      </div>
+                </md-input-container>
+
+        
+                <div flex="10">
+                    <md-button type="submit" class="md-raised md-primary" ng-click="cc.obtenerCreditos()">Buscar Creditos</md-button>
+                </div>
+            </div>
+
+        </form>
+    </md-content>
+
+
+     <table md-table ng-model="cc._selected" md-row-select="cc._selection" multiple="cc._multiSelection" 
+     md-progress="cc._promise">
+         <thead md-head md-order="cc._order">
+             <tr md-row>
+                 <th md-column md-numeric>Valor min</th>
+                 <th md-column md-numeric>Valor max</th>
+                 <th md-column md-numeric>Empresa</th>
+                 <th md-column md-numeric>Interes</th>
+                 <th md-column md-numeric>Plazos</th>
+                
+                 
+             </tr>
+         </thead>
+         <tbody md-body>
+             
+             <tr md-row md-select="item" md-select-id="id" md-auto-select="cc._autoSelection" md-row-select="cc._rowSelection" 
+             md-on-select="cc._onSelect" ng-repeat="item in cc._lista | orderBy: cc._order | filter:cc._buscar ">
+                 <td md-cell>{{item.min}}</td>
+                 <td md-cell>{{item.max}}</td>
+                 <td md-cell>{{item.empresa}}</td>
+                 <td md-cell>{{item.interes}}</td>
+                 <td md-cell>{{item.plazos}}</td>
+                
+                 
+                 
+             </tr>
+         </tbody>
+     </table>
+ 
+ </md-table-container>
+ 
+ <md-table-pagination md-boundary-links="cc._boundary" md-limit-options="cc._limitOption" md-label="{{cc._label}}" md-limit="cc._limit"
+     md-total="{{cc._total}}" md-page="cc._page" md-page-select="cc._selectedPage" ng-disabled="cc._disable" md-on-paginate="cc._onPage"></md-table-pagination>
+ 
+ 
+ 

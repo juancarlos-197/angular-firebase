@@ -1,0 +1,24 @@
+<md-table-container>
+    <md-button ng-click="tc.obtenerDatos()" class="md-raised md-primary">Obtener Datos</md-button>
+    <table md-table ng-model="tc._selected" md-row-select="tc._selection" multiple="tc._multiSelection" md-progress="tc._promise">
+    <thead md-head md-order="tc._order">
+      <tr md-row>
+        <th md-column md-numeric>Nombre</th>
+        <th md-column md-numeric>Edad</th>
+        <th md-column md-numeric>Estatura</th>
+      </tr>
+    </thead>
+    <tbody md-body>
+        <!--
+            [{id:1,nombre:'Nancy',edad:22,estatura:1.6},..]
+
+            -->
+      <tr md-row md-select="item" md-select-id="id" md-auto-select="tc._autoSelection" md-row-select="tc._rowSelection" md-on-select="tc._onSelect" ng-repeat="item in tc._lista | orderBy: tc._order | filter:tc._buscar ">
+        <td md-cell>{{item.nombre}}</td>
+        <td md-cell>{{item.edad}}</td>
+        <td md-cell>{{item.estatura}}</td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+<md-table-pagination md-boundary-links="tc._boundary" md-limit-options="tc._limitOption" md-label="{{tc._label}}" md-limit="tc._limit" md-total="{{tc._total}}" md-page="tc._page" md-page-select="tc._selectedPage" ng-disabled="tc._disable" md-on-paginate="tc._onPage"></md-table-pagination>

@@ -1,0 +1,31 @@
+.element {
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+}
+
+.md-toolbar-tools {
+  background-color: #004D71;
+  color: white;
+}
+
+.btn-nav{
+  margin: 0;
+  padding: 7px;
+  color: #000;
+  text-align: left
+}
+
+.img-circle {
+    height: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+.text-gray{
+  color: darkgray;
+}
+/*this is for the */
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){
+    background-color: #004f71;
+}

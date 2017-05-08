@@ -1,0 +1,108 @@
+<!-- El uso de las variable
+	nav._$rootScope.show ->se utiliza para ocultar o mostrar la barra asi como mostrar el icono adecuado
+	       0 para ocultar el toolbar
+		   1 para mostrar el toolbar con menu hamburguesa
+		   2 para mostrar el tollbar con una flecha de regreso
+		   default mostra el toolbar con icono de hamburguesa
+	nav._$rootScope.menut ->se utiliza para mostrar iconos en el menu del toolbar
+		   101 sin boton
+		   102 para mapa
+		   103 y 104 para refrescar y terminar
+	nav._$rootScope.showmenu ->se utiliza para mostrar un menu desplegable
+			0 para ocultarlo
+			diferente para mostrarlo
+	nav._$rootScope.menu ->se utiliza para mostrar las opciones dependiendo del login
+			pe para personal
+			cl para clientes-->
+<div class=toolbardemoBasicUsage ng-hide='nav._$rootScope.show === 0'  ng-cloak>
+	<!--Toolbar y su contenido-->
+	<md-content>
+		<md-toolbar.md-hue-2>
+			<div class=md-toolbar-tools>
+				<!-- Icono -->
+				<div  ng-switch="nav._$rootScope.show">
+					<!--Icono de menu de amburguesa-->
+					<div ng-switch-when="1">
+						<md-button   class="md-icon-button"   ng-click='nav.toggleLeft()' aria-label='Settings' ng-disabled='false'>
+						<md-icon md-svg-icon='../assets/images/menu.svg'></md-icon>
+						</md-button>
+					</div>
+					
+					<!--Icono de regresar-->
+					<div ng-switch-when="2">
+						<md-button class='md-icon-button' ng-click='nav.onBack()' aria-label='Settings' ng-disabled='false'>
+						<md-icon md-svg-icon='/assets/icons/ic_backspace_white_24px.svg'></md-icon>
+						</md-button>
+					</div>
+
+					<!--Sin icono-->
+					<div ng-switch-when="0">
+					</div>
+					
+					<!--Icono de menu de amburguesa-->
+					 <div ng-switch-default>
+						<md-button   class="md-icon-button"   ng-click='nav.toggleLeft()' aria-label='Settings' ng-disabled='false'>
+						<md-icon md-svg-icon='../assets/images/menu.svg'></md-icon>
+						</md-button>
+					</div>
+				</div>
+				<!-- Titulo -->
+				<h2>
+					<span>{{nav._$rootScope.title}}</span>
+				</h2>
+				<span flex=''></span>
+				<!-- Menú para refrescar-->
+				<md-button ng-if='nav._$rootScope.menut === 104 || nav._$rootScope.menut === 103' class='md-icon-button' ng-click='nav._$rootScope.doRefresh()' aria-label='recargar'>
+					<md-icon md-svg-icon='/assets/icons/ic_autorenew_black_24px.svg'></md-icon>
+				</md-button>
+				<!-- Menú para mapa-->
+				<md-button ng-show='nav._$rootScope.menut === 102' class='md-icon-button' ng-click='nav.goMap()' aria-label='map'>
+					<md-icon md-svg-icon='/assets/icons/ic_map_white_24px.svg'></md-icon>
+				</md-button>
+				<!-- Menú para terminar aclaración-->
+				<md-button ng-if='nav._$rootScope.menut === 104' layout-align='end center' ng-click='nav._$rootScope.doTerminar()' aria-label='Settings' ng-disabled='false'>
+					<!--TODO agregar icono de regresar-->
+					Terminar
+				</md-button>
+			</div>
+			<menubar ng-hide='nav._$rootScope.showmenu === 0'></menubar>
+		</md-toolbar.md-hue-2>
+	</md-content>
+	<md-sidenav class='md-sidenav-left ' md-component-id='left' style="background-color: #f5f5f5;">
+		<md-toolbar class='md-theme-light'>
+			<div  layout="column" layout-align="center center" layout-margin>
+   				<img class="img-circle" src="/assets/images/logo_enterprice.png" >
+				<h6>
+					{{nav.topField}}
+				</h6>
+				<h6 class="text-gray">
+					{{nav.bottomField}}
+				</h6>
+			</div>
+			<md-content  layout='column' flex>
+				<md-button class='btn-nav md-primary'  ng-click='nav.inicio()' target='_self' style='color: #000'>
+					<md-icon md-svg-icon='/assets/icons/ic_home_black_24px.svg'></md-icon>
+					Inicio
+				</md-button>
+						<!-- Botones para Administrativo -->
+						<!--ng-show='nav._$rootScope.menu==="pe"'-->
+						<div  layout='column' flex >
+							<md-button class='btn-nav md-primary' ng-click='nav.busquedaC()' target='_self' style='color: #000;'> Buscar Créditos</md-button>
+							<md-button class='btn-nav md-primary' ng-click='nav.misC()' target='_self' style='color: #000'> Mis Créditos</md-button>
+							<md-button class='btn-nav md-primary' ng-click='nav.registroC()' target='_self' style='color: #000'> Registrar Crédito</md-button>
+						</div>
+						<!-- End -->
+						<!-- Botones para clientes -->
+						<!--<div ng-show='nav._$rootScope.menu==="cl"' layout='column' flex >
+							<md-button class='btn-nav md-primary' ng-click='nav.aclaracionesCl()' target='_self' style='color: #000;'> Aclaraciones</md-button>
+							<md-button class='btn-nav md-primary' ng-click="nav.doEstadoDeCuenta()" target='_self' style='color: #000'> Estado de cuenta</md-button>
+						</div>-->
+						 <!--End -->
+				<md-button class='btn-nav md-primary' ng-click='nav.logout()' target='_self' style='color: #000;'>
+					<md-icon md-svg-icon='/assets/icons/ic_exit_black_24px.svg'></md-icon>
+					Salir
+				</md-button>
+			</md-content>
+		</md-toolbar>
+	</md-sidenav>
+</div>
